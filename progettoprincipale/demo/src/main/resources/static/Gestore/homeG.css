@@ -1,0 +1,213 @@
+
+:root {
+    --primary-color: #007bff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --light-gray: #f8f9fa;
+    --gray: #6c757d;
+    --text-color: #333;
+    --border-color: #dee2e6;
+    --background-color: #f4f6f8;
+    --white: #fff;
+    --shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+header h1 {
+    color: var(--text-color);
+}
+
+.logout-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+    background-color: var(--danger-color);
+    color: var(--white);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-box {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.section-header input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    width: 220px;
+}
+
+.section-header button {
+    padding: 8px 15px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.section-header button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--light-gray);
+    font-weight: 600;
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 15px;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    text-align: center;
+    display: inline-block;
+}
+
+.status.attivo { background-color: var(--success-color); }
+.status.guasto { background-color: var(--danger-color); }
+.status.manutenzione { background-color: var(--warning-color); color: var(--text-color); }
+.status.sconosciuto { background-color: var(--gray); }
+
+.add-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: var(--success-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.modal-content input {
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#confirmAddMachine, #confirmAddStaff {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+#cancelAddMachine, #cancelAddStaff {
+    background-color: var(--gray);
+    color: var(--white);
+}

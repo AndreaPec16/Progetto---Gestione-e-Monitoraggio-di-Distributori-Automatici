@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Utente</title>
+    <link rel="stylesheet" th:href="@{/Cliente/home.css}" />
+</head>
+<body>
+<header>
+    <p>Benvenuto, <span th:text="${username != null ? username : 'Utente'}" class="user-name">Utente</span></p>
+    <a th:href="@{/logout}" style="text-decoration: none;">
+        <button id="logoutBtn" type="button">Logout</button>
+    </a>
+</header>
+
+<main>
+    <section class="connection">
+        <div th:if="${connectedMachineId == null}">
+            <div class="connect-box">
+                <button id="connectBtn">Connetti</button>
+                <input type="text" id="machineCode" placeholder="Inserisci codice macchina">
+            </div>
+        </div>
+        <div th:if="${connectedMachineId != null}">
+            <div class="connect-box">
+                <p>Connesso a: <strong th:text="${connectedMachineId}"></strong></p>
+                <button id="disconnectBtn">Disconnetti</button>
+            </div>
+        </div>
+
+        <div class="information">
+            <p id="credit">Saldo attuale: €
+                <span th:text="${credito != null ? #numbers.formatDecimal(credito, 1, 2) : '0.00'}">0.00</span>
+            </p>
+            <button id="rechargeBtn">Ricarica Credito</button>
+            <ul>
+                <li><strong>Nome:</strong> <span th:text="${nomeReale}">---</span></li>
+                <li><strong>Email:</strong> <span th:text="${email}">---</span></li>
+                <li><strong>Macchina connessa:</strong>
+                    <span id="connectedMachine" th:text="${connectedMachineId != null ? connectedMachineId : 'Nessuna'}">Nessuna</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>☕ MyCoffee - 2025</p>
+</footer>
+
+<script th:src="@{/Cliente/home.js}"></script>
+
+</body>
+</html>

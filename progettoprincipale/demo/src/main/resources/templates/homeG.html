@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Gestore</title>
+    <link rel="stylesheet" th:href="@{/Gestore/homeG.css}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+<header>
+    <h1>☕ Dashboard Gestore</h1>
+    <a href="/logout" class="logout-btn">Esci</a>
+</header>
+
+<main>
+    <div class="grid-container">
+        <section class="section-box">
+            <div class="section-header">
+                <h2>Gestione Macchinette</h2>
+                <input type="text" id="machineSearch" placeholder="Cerca per codice o posizione...">
+                <button id="searchMachineBtn">Cerca</button>
+            </div>
+            <table id="machineTable">
+                <thead>
+                <tr>
+                    <th>Codice</th>
+                    <th>Posizione</th>
+                    <th>Modello</th>
+                    <th>Stato</th>
+                    <th>Azioni</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="addMachineBtn" class="add-btn">Aggiungi Macchinetta</button>
+        </section>
+
+        <section class="section-box">
+            <div class="section-header">
+                <h2>Gestione Addetti Manutenzione</h2>
+                <input type="text" id="staffSearch" placeholder="Cerca per nome o email...">
+                <button id="searchStaffBtn">Cerca</button>
+            </div>
+            <table id="staffTable">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Azioni</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="addStaffBtn" class="add-btn">Aggiungi Addetto</button>
+        </section>
+    </div>
+</main>
+
+<div id="modalMachine" class="modal">
+    <div class="modal-content">
+        <h3>Aggiungi Nuova Macchinetta</h3>
+        <input type="text" id="newMachineCode" placeholder="Codice (es. MCH001)">
+        <input type="text" id="newMachineLocation" placeholder="Indirizzo">
+        <input type="text" id="newMachineModel" placeholder="Modello">
+        <p>Clicca sulla mappa per selezionare le coordinate:</p>
+        <div id="mapSelect" style="height: 250px; width: 100%; margin-bottom: 10px;"></div>
+        <input type="text" id="newMachineLat" placeholder="Latitudine" readonly>
+        <input type="text" id="newMachineLon" placeholder="Longitudine" readonly>
+        <div class="modal-actions">
+            <button id="confirmAddMachine">Conferma</button>
+            <button id="cancelAddMachine">Annulla</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalStaff" class="modal">
+    <div class="modal-content">
+        <h3>Aggiungi Nuovo Addetto</h3>
+        <input type="text" id="newStaffName" placeholder="Nome Completo">
+        <input type="email" id="newStaffEmail" placeholder="Email">
+        <input type="text" id="newStaffUsername" placeholder="Username (per il login)">
+        <input type="password" id="newStaffPassword" placeholder="Password">
+        <div class="modal-actions">
+            <button id="confirmAddStaff">Conferma</button>
+            <button id="cancelAddStaff">Annulla</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script th:src="@{/Gestore/homeG.js}"></script>
+</body>
+</html>

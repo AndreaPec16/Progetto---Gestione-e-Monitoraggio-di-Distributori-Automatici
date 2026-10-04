@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://coffee.schema_macchinetta"
+           xmlns="http://coffee.schema_macchinetta"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="PercentualeType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="macchinette">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="macchinetta" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:string"/>
+                            <xs:element name="modello" type="xs:string"/>
+                            <xs:element name="posizione" type="xs:string"/>
+                            <xs:element name="stato" type="xs:string"/>
+                            <xs:element name="creditoResiduo" type="xs:decimal"/>
+
+                            <xs:element name="risorse">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="caffe" type="PercentualeType"/>
+                                        <xs:element name="acqua" type="PercentualeType"/>
+                                        <xs:element name="zucchero" type="PercentualeType"/>
+                                        <xs:element name="bicchieri" type="PercentualeType"/>
+                                        <xs:element name="palette" type="PercentualeType"/>
+                                        <xs:element name="cioccolato" type="PercentualeType"/>
+                                        <xs:element name="latte" type="PercentualeType"/>
+                                        <xs:element name="te" type="PercentualeType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="bevande">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="bevanda" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="nome" type="xs:string"/>
+                                                    <xs:element name="prezzo" type="xs:decimal"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

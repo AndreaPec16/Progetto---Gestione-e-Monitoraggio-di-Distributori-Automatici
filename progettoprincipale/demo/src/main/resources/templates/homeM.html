@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Macchinetta ' + ${distributore.codiceVisivo}">Macchinetta</title>
+    <link rel="stylesheet" th:href="@{/Macchina/homeM.css}">
+</head>
+<body th:data-id="${distributore.codiceVisivo}"
+      th:data-username="${utente != null and utente.connectedMachineId == distributore.codiceVisivo ? utente.username : ''}"
+      th:data-lat="${distributore.latitudine}"
+      th:data-lon="${distributore.longitudine}">
+
+<header>
+    <h1>☕ MyCoffee</h1>
+    <p>Codice macchina: <strong th:text="${distributore.codiceVisivo}">...</strong></p>
+</header>
+
+<main>
+    <div th:if="${utente != null and utente.connectedMachineId == distributore.codiceVisivo}">
+        <p style="text-align: center;">Connesso come: <strong th:text="${utente.username}"></strong> | Credito: <strong th:id="userCredit" th:text="${#numbers.formatDecimal(utente.credito, 1, 2)} + ' €'"></strong></p>
+
+        <section class="products">
+            <h2>Scegli il tuo prodotto</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section class="sugar" id="sugarSection" style="display:none;">
+            <h3>Quanto zucchero vuoi?</h3>
+            <div class="sugar-options">
+                <button class="sugar-btn" data-sugar="0">🥄×0</button>
+                <button class="sugar-btn" data-sugar="1">🥄×1</button>
+                <button class="sugar-btn" data-sugar="2">🥄×2</button>
+                <button class="sugar-btn" data-sugar="3">🥄×3</button>
+            </div>
+        </section>
+
+        <section class="progress" id="progressSection" style="display:none;">
+            <h3 id="progressText">...</h3>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </section>
+
+        <section id="result" class="result"></section>
+    </div>
+
+    <div th:if="${utente == null or utente.connectedMachineId != distributore.codiceVisivo}" class="login-prompt">
+        <h2>Macchinetta in attesa</h2>
+        <p>In attesa di connessione da un utente...</p>
+    </div>
+</main>
+
+<footer>
+    <p>☕ MyCoffee - 2025</p>
+</footer>
+
+<script th:src="@{/Macchina/homeM.js}"></script>
+</body>
+</html>

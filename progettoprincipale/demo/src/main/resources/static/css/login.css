@@ -1,0 +1,104 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: floralwhite;
+    color: black;
+    line-height: 1.5;
+    padding: 1em;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
+}
+
+header p {
+    font-size: 1em;
+    color: #555;
+}
+
+.login-card {
+    background: white;
+    padding: 2em;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card h2 {
+    color: #333;
+    margin-bottom: 1.5em;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 100%;
+}
+
+#loginBtn {
+    padding: 0.8em 1.4em;
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#loginBtn:hover {
+    background-color: deepskyblue;
+    transform: scale(1.02);
+}
+
+footer {
+    text-align: center;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 2em;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.8em;
+    }
+
+    .login-card {
+        padding: 1.5em;
+    }
+
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    #loginBtn {
+        font-size: 1em;
+        padding: 0.7em 1.2em;
+    }
+}

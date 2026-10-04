@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manutentori xmlns:th="http://www.thymeleaf.org">
+
+    <manutentore th:each="m : ${manutentori}">
+        <id th:text="${m.id}"/>
+        <nome th:text="${m.nome}"/>
+        <email th:text="${m.email}"/>
+    </manutentore>
+</manutentori>
